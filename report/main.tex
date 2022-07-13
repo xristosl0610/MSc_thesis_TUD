@@ -1,14 +1,126 @@
-\documentclass{article}
+%------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS
+%------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 
-\title{MindMap Documentation}
+\title{Thesis KickOff}
 \author{Christos Lathourakis}
-\date{July 2022}
+\date{2021 - 2022}
+
+% Include the file specifying the document structure and styling
+\input{reportStructure}
+
+%------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%------------------------------------------------------------------------------
+
+\addbibresource{references.bib}
+
+%------------------------------------------------------------------------------
+%	Main Document
+%------------------------------------------------------------------------------
 
 \begin{document}
 
-\maketitle
+\input{titlepage}
+
+\newpage
+
+
+%---------- Abstract & Acknowledgments ----------
+
+\pagenumbering{roman}
+
+\vspace*{5cm}
+
+\begin{flushright}
+	\textit{``{\lat Wir m\"ussen wissen. Wir werden wissen}''} \\
+	{\lat David Hilbert} (1930)
+\end{flushright}
+
+\vspace*{\fill}
+
+\newpage 
+
+{\Large \textbf{ABSTRACT}}
+\newline
+\vspace{0.5cm}
+
+\input{Sections/Abstract}
+
+\newpage
+
+{\Large \textbf{ACKNOWLEDGMENTS}}
+\newline
+\vspace{0.5cm}
+
+\input{Sections/Acknowledgements}
+
+\newpage
+
+%---------- Contents, Figures, Tables ----------
+
+\tableofcontents
+
+\newpage
+
+\listoffigures
+
+\listoftables
+
+\listofalgorithms
+
+%---------- Acronyms ----------
+\newpage
+\thispagestyle{plain}
+\printglossary[type=\acronymtype]
+
+%---------- Main Report ----------
+
+\newpage
+
+\pagenumbering{arabic}
 
 \section{Introduction}
+\input{Sections/1_Introduction}
+
+\newpage
+\section{Literature Review} \label{LitReview}
+\input{Sections/2_Literature}
+
+\newpage
+\section{Methodology} \label{workflow}
+\input{Sections/3_Workflow}
+
+\newpage
+\section{Verification, Validation and Benchmarking} \label{toy}
+
+\input{Sections/4_SimpleCase}
+
+\newpage
+\section{Case Study} \label{caseStud}
+
+\input{Sections/5_CaseStudy}
+
+\newpage
+\section{Discussion - Conclusion} \label{discConcl}
+
+\input{Sections/6_DiscussionConclusion}
+
+%---------- Appendices ----------
+\newpage
+\appendix
+
+\section{Appendices}
+
+\input{Sections/Appendices}
+
+%---------- Bibliography ----------
+\newpage
+\thispagestyle{plain}
+\AtNextBibliography{\small}
+\printbibliography
 
 \end{document}

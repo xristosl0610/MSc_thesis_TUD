@@ -1,0 +1,34 @@
+%------------------------------------------------------------------------------
+%	IMRPOVEMENTS
+%------------------------------------------------------------------------------
+
+
+\subsection{Improvements}
+
+
+The main points of improvement that have arisen in the project until this stage of progress are the following:
+\begin{itemize}
+    \item A significant drawback of the current procedure is its computational cost. More specifically, the \gls{BMU} is a costly method that slows down the whole algorithm, since it needs to be performed in every decision step of every episode, meaning $N_{\text{epoch}} \times T$ times.\\
+    One possible solution to this issue would be the use of conjugate priors both for the prior distribution of the deterioration parameters and their likelihood. In this way, the posterior distribution can be expressed in a closed form, thus, it would not be needed to run a sampling procedure.
+    \item Another important feature that needs adjustment in order to improve the efficiency and the accuracy of the proposed framework, is the calculation of the failure probability $\text{Pr}_{\text{fail}}$ for every deterioration state. Considering the ration of the samples above the failure threshold over the total number of samples, may lead to inaccuracies, especially for the lower values of damage, $D(t)$ when the probability of failure is close to 0.\\
+    Ideally, since there is not a closed form expression for the posterior distribution of damage, an \gls{MC} approach would yield the most accurate results. However, taking into consideration, that this procedure will need to be ran $N_{\text{epoch}} \times T$ times, this solution is extremely expensive in terms of computational time. Therefore, a much quicker approach such as \gls{FORM}, will be considered, in order to improve the algorithm without affecting significantly the run-time.
+\end{itemize}
+
+
+
+%------------------------------------------------------------------------------
+%	NEXT STEPS
+%------------------------------------------------------------------------------
+
+
+\subsection{Next Steps}
+
+Regarding the next steps of this project, there are plenty of ideas in order to scale up the proposed framework and check its performance in more realistic scenarios.
+
+\begin{itemize}
+    \item The closest milestone is the finalization of the toy problem, in order to examine the efficiency of the framework in a simple and easy to interpret case.
+    \item After that, a possible variation of the toy problem would be a \gls{TBM} formulation. More specifically, the time window of the system would not be fixed, so each episode will terminate upon failure. This variant will yield valuable results, in case only two actions are considered, i.e. do nothing and replace. In this way, it will be specified when is it the most beneficial to perform a complete replacement of the component (system).
+    \item Then, it is planned to test also the other two \gls{DRL} algorithms, namely \gls{A2C} and \gls{PPO}, and perform the necessary comparisons with \gls{DDQN} in order to determine which one is the most efficient, or possible weaknesses among the three.
+    \item As a further step, more actions could be integrated in this approach. In particular, more levels of repairing, or even strengthening of the system would be interesting options, with possible future applicability in retrofitting problems.
+    \item Lastly, the ultimate goal of the current project is to scale this framework to a more complicated engineering system, with multiple components. Their interaction would play an important role in the definition of the optimal maintenance policy, bearing in mind their ability to compensate the deterioration of neighbouring elements of the structure.
+\end{itemize}
